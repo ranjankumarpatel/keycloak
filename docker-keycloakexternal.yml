@@ -1,17 +1,6 @@
 version: "3"
-services:
-  ldap:
-    image: dcm4che/slapd-dcm4chee:2.4.48-22.2
-    ports:
-      - "389:389"
-      - "636:636"
-    environment:
-      LDAP_URLS: "ldap:/// ldaps:///"
-    volumes:
-      - /var/local/dcm4chee-arc/ldap:/var/lib/openldap/openldap-data
-      - /var/local/dcm4chee-arc/slapd.d:/etc/openldap/slapd.d
- 
-    keycloak:
+services: 
+  keycloak:
     image: dcm4che/keycloak:10.0.1
     ports:
       - "8880:8880"
@@ -22,7 +11,6 @@ services:
     environment:
       DB_VENDOR: mysql
       MYSQL_ROOT_PASSWORD: 13972684
-
       MYSQL_DATABASE: keycloak
       MYSQL_USER: keycloak
       MYSQL_PASSWORD: keycloak
@@ -34,7 +22,7 @@ services:
       MANAGEMENT_HTTP_PORT: 8990
       MANAGEMENT_HTTPS_PORT: 8993
       LDAP_URL: ldaps://gunter-nb:636
-      KEYCLOAK_WAIT_FOR: ldap:636 mariadb:3306
+      KEYCLOAK_WAIT_FOR: 54.203.63.57:3306
     depends_on:
       - ldap
       - mariadb
