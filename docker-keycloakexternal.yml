@@ -21,7 +21,6 @@ services:
       HTTPS_PORT: 8843
       MANAGEMENT_HTTP_PORT: 8990
       MANAGEMENT_HTTPS_PORT: 8993
-      LDAP_URL: ldaps://gunter-nb:636
       KEYCLOAK_WAIT_FOR: 54.203.63.57:3306
     volumes:
       - /etc/localtime:/etc/localtime:ro
